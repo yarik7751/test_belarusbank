@@ -3,7 +3,7 @@ package by.yarik.test_belarusbank.core.mappers;
 
 import java.util.List;
 
-import by.yarik.test_belarusbank.repository.pojo.NewsResponse;
+import by.yarik.test_belarusbank.api.pojo.NewsResponse;
 import by.yarik.test_belarusbank.screens.news.model.NewsViewModel;
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;

@@ -1,4 +1,4 @@
-package by.yarik.test_belarusbank.repository;
+package by.yarik.test_belarusbank.api;
 
 import android.content.Context;
 

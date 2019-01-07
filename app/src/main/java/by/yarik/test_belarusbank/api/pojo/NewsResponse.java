@@ -1,4 +1,4 @@
-package by.yarik.test_belarusbank.repository.pojo;
+package by.yarik.test_belarusbank.api.pojo;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,28 +6,27 @@ import com.google.gson.annotations.SerializedName;
 public class NewsResponse {
 
     @SerializedName("name_ru")
-    @Expose
     private String nameRu;
+
     @SerializedName("name_be")
-    @Expose
     private String nameBe;
+
     @SerializedName("html_ru")
-    @Expose
     private String htmlRu;
+
     @SerializedName("html_be")
-    @Expose
     private String htmlBe;
+
     @SerializedName("img")
-    @Expose
     private String img;
+
     @SerializedName("create_time")
-    @Expose
     private String createTime;
+
     @SerializedName("change_time")
-    @Expose
     private String changeTime;
+
     @SerializedName("start_date")
-    @Expose
     private String startDate;
 
     public String getNameRu() {

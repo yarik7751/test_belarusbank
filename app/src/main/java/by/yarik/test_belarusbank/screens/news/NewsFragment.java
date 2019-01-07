@@ -11,8 +11,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.repository.Api;
-import by.yarik.test_belarusbank.repository.pojo.NewsResponse;
+import by.yarik.test_belarusbank.api.Api;
 import by.yarik.test_belarusbank.core.baseview.BaseFragment;
 import by.yarik.test_belarusbank.screens.news.adapter.NewsAdapter;
 import by.yarik.test_belarusbank.screens.news.model.NewsViewModel;
