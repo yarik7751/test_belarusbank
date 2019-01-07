@@ -27,15 +27,19 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
     }
 
     @Override
-    public int resourcesLayout() {
+    protected int resourcesLayout() {
         return R.layout.fragment_news;
     }
 
     @Override
-    public View onCreateView(View view) {
-        presenter = new NewsPresenter(this, Api.getClient(getContext()));
+    protected View onCreateView(View view, @Nullable Bundle savedInstanceState) {
         getPresenter().onCreateView();
         return view;
+    }
+
+    @Override
+    protected void setPresenter() {
+        presenter = new NewsPresenter(this, Api.getClient(getContext()));
     }
 
     @Override

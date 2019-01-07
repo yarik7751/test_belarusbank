@@ -32,7 +32,11 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         View view = inflater.inflate(resourcesLayout(), container, false);
         unbinder = ButterKnife.bind(this, view);
         initProgressDialog();
-        return onCreateView(view);
+
+        if(presenter == null) {
+            setPresenter();
+        }
+        return onCreateView(view, savedInstanceState);
     }
 
     private void initProgressDialog() {
@@ -63,11 +67,13 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         progressDialog.dismiss();
     }
 
-    public abstract int resourcesLayout();
+    protected abstract int resourcesLayout();
 
-    public abstract View onCreateView(View view);
+    protected abstract View onCreateView(View view, @Nullable Bundle savedInstanceState);
 
-    public T getPresenter() {
+    protected T getPresenter() {
         return presenter;
     }
+
+    protected abstract void setPresenter();
 }
