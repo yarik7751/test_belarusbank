@@ -17,7 +17,7 @@ public class Api {
     private static int REQUEST_TIMEOUT = 60;
     private static OkHttpClient okHttpClient;
 
-    public static IApi getClient(Context context) {
+    public static IApi getBelarusbankApi(Context context) {
         if(okHttpClient == null) {
             initOkHttpClient(context);
         }

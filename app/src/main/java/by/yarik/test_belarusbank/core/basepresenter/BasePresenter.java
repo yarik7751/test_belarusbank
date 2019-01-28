@@ -1,6 +1,7 @@
 package by.yarik.test_belarusbank.core.basepresenter;
 
 
+import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.baseview.IBaseView;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -9,12 +10,14 @@ import io.reactivex.functions.Consumer;
 
 public abstract class BasePresenter<T extends IBaseView> implements IBasePresenter {
 
+    protected ResourceManager resourceManager;
     private CompositeDisposable compositeSubscription;
     protected T view;
 
-    public BasePresenter(T view) {
+    public BasePresenter(T view, ResourceManager resourceManager) {
         compositeSubscription = new CompositeDisposable();
         this.view = view;
+        this.resourceManager = resourceManager;
     }
 
     public T getView() {

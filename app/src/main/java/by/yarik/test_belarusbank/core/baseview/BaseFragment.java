@@ -12,6 +12,9 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import by.yarik.test_belarusbank.R;
+import by.yarik.test_belarusbank.api.Api;
+import by.yarik.test_belarusbank.api.IApi;
+import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.IBasePresenter;
 
 public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView {
@@ -20,9 +23,11 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
 
     protected T presenter;
     protected Unbinder unbinder;
+    protected ResourceManager resourceManager;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        resourceManager = new ResourceManager(getContext());
         super.onCreate(savedInstanceState);
     }
 
@@ -55,6 +60,10 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     public void onDestroyView() {
         unbinder.unbind();
         super.onDestroyView();
+    }
+
+    protected IApi getBelarusbankApi() {
+        return Api.getBelarusbankApi(getContext());
     }
 
     @Override

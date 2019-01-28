@@ -3,8 +3,73 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_rate_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_8"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8">
+
+            <TextView
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/usd_title"/>
+
+            <TextView
+                android:id="@+id/tv_usd_in"
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_usd_out"
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8">
+
+            <TextView
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/eur_title"/>
+
+            <TextView
+                android:id="@+id/tv_eur_in"
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_eur_out"
+                android:layout_width="@dimen/zero_size"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_news"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_8"/>
 </LinearLayout>

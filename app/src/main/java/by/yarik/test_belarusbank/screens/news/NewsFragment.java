@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -15,11 +16,27 @@ import by.yarik.test_belarusbank.api.Api;
 import by.yarik.test_belarusbank.core.baseview.BaseFragment;
 import by.yarik.test_belarusbank.screens.news.adapter.NewsAdapter;
 import by.yarik.test_belarusbank.screens.news.model.NewsViewModel;
+import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
 
 public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsView {
 
     @BindView(R.id.rv_news)
     protected RecyclerView news;
+
+    @BindView(R.id.tv_rate_date)
+    protected TextView rateDateTextView;
+
+    @BindView(R.id.tv_eur_in)
+    protected TextView eurInTextView;
+
+    @BindView(R.id.tv_eur_out)
+    protected TextView eurOutTextView;
+
+    @BindView(R.id.tv_usd_in)
+    protected TextView usdInTextView;
+
+    @BindView(R.id.tv_usd_out)
+    protected TextView usdOutTextView;
 
     public static NewsFragment newInstance() {
         return new NewsFragment();
@@ -38,7 +55,7 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
 
     @Override
     protected void setPresenter() {
-        presenter = new NewsPresenter(this, Api.getClient(getContext()));
+        presenter = new NewsPresenter(this, resourceManager, getBelarusbankApi());
     }
 
     @Override
@@ -55,5 +72,14 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
     @Override
     public void updateNews(List<NewsViewModel> newsList) {
         news.setAdapter(new NewsAdapter(newsList));
+    }
+
+    @Override
+    public void updateRate(RateViewMoodel rateViewMoodel) {
+        rateDateTextView.setText(rateViewMoodel.getDate());
+        usdInTextView.setText(rateViewMoodel.getUsdIn());
+        usdOutTextView.setText(rateViewMoodel.getUsdOut());
+        eurInTextView.setText(rateViewMoodel.getEurIn());
+        eurOutTextView.setText(rateViewMoodel.getEurOut());
     }
 }
