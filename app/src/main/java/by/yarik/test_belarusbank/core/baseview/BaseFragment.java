@@ -12,8 +12,9 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.api.Api;
-import by.yarik.test_belarusbank.api.IApi;
+import by.yarik.test_belarusbank.api.Requests;
+import by.yarik.test_belarusbank.api.belarusbank.Api;
+import by.yarik.test_belarusbank.api.belarusbank.IApi;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.IBasePresenter;
 
@@ -21,6 +22,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
 
     private ProgressDialog progressDialog;
 
+    protected Requests requests;
     protected T presenter;
     protected Unbinder unbinder;
     protected ResourceManager resourceManager;
@@ -28,6 +30,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         resourceManager = new ResourceManager(getContext());
+        requests = new Requests(Api.getBelarusbankApi(getContext()));
         super.onCreate(savedInstanceState);
     }
 
@@ -62,8 +65,8 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         super.onDestroyView();
     }
 
-    protected IApi getBelarusbankApi() {
-        return Api.getBelarusbankApi(getContext());
+    protected Requests getRequests() {
+        return requests;
     }
 
     @Override

@@ -12,8 +12,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.api.Api;
+import by.yarik.test_belarusbank.api.Requests;
 import by.yarik.test_belarusbank.core.baseview.BaseFragment;
+import by.yarik.test_belarusbank.core.data.news.NewsRepository;
+import by.yarik.test_belarusbank.core.domain.news.INewsInteractor;
+import by.yarik.test_belarusbank.core.domain.news.INewsRepository;
+import by.yarik.test_belarusbank.core.domain.news.NewsInteractor;
 import by.yarik.test_belarusbank.screens.news.adapter.NewsAdapter;
 import by.yarik.test_belarusbank.screens.news.model.NewsViewModel;
 import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
@@ -55,7 +59,10 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
 
     @Override
     protected void setPresenter() {
-        presenter = new NewsPresenter(this, resourceManager, getBelarusbankApi());
+        Requests requests = getRequests();
+        INewsRepository repository = new NewsRepository(requests);
+        INewsInteractor interactor = new NewsInteractor(repository);
+        presenter = new NewsPresenter(this, resourceManager, interactor);
     }
 
     @Override

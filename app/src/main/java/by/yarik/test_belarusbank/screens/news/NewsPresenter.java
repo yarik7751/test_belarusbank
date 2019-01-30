@@ -2,11 +2,13 @@ package by.yarik.test_belarusbank.screens.news;
 
 import java.util.List;
 
-import by.yarik.test_belarusbank.api.IApi;
+import by.yarik.test_belarusbank.api.Requests;
+import by.yarik.test_belarusbank.api.belarusbank.IApi;
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
+import by.yarik.test_belarusbank.core.domain.news.INewsInteractor;
 import by.yarik.test_belarusbank.core.mappers.NewsMapper;
 import by.yarik.test_belarusbank.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.core.rx.ScheduleSingle;
@@ -14,11 +16,11 @@ import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
 
 public class NewsPresenter extends BasePresenter<INewsView> implements INewsPresenter {
 
-    private IApi request;
+    private INewsInteractor interactor;
 
-    public NewsPresenter(INewsView view, ResourceManager resourceManager, IApi request) {
+    public NewsPresenter(INewsView view, ResourceManager resourceManager, INewsInteractor interactor) {
         super(view, resourceManager);
-        this.request = request;
+        this.interactor = interactor;
     }
 
     @Override
@@ -33,12 +35,11 @@ public class NewsPresenter extends BasePresenter<INewsView> implements INewsPres
 
     //----------Request-------------
     private void getNews() {
-        addDisposable(request.news()
+        addDisposable(interactor.news()
                 .flatMap(newsResponses -> {
                     getNewsSuccessful(newsResponses);
-                    return request.currencyExchange();
+                    return interactor.currencyExchange();
                 })
-                .compose(ScheduleSingle.io())
                 .compose(RxTransformers.applySingleBeforeAndAfter(rxShowLoading(), rxHideLoading()))
                 .subscribe(this::getCurrencyExchangeSuccessful, this::onFailure));
     }
