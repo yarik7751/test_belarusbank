@@ -7,4 +7,7 @@
     <string name="in_value">In: %s</string>
     <string name="out_value">Out: %s</string>
     <string name="date_value">Rate date: %s</string>
+    <string name="news_title">Новости</string>
+    <string name="credits_title">Кредиты</string>
+    <string name="atm_title">Банкоматы</string>
 </resources>
