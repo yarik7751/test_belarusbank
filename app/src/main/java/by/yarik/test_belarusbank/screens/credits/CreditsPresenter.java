@@ -2,7 +2,6 @@ package by.yarik.test_belarusbank.screens.credits;
 
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
-import by.yarik.test_belarusbank.core.basepresenter.IBasePresenter;
 import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
 
 public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICreditsPresenter {
@@ -16,7 +15,7 @@ public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICr
 
     @Override
     public void onCreateView() {
-
+        getView().initUi();
     }
 
     @Override
