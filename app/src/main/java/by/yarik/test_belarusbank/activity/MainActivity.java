@@ -13,6 +13,8 @@ import java.util.List;
 
 import by.yarik.test_belarusbank.core.BaseActivity;
 import by.yarik.test_belarusbank.R;
+import by.yarik.test_belarusbank.core.MainBottomMenuPage;
+import by.yarik.test_belarusbank.screens.credits.CreditsFragment;
 import by.yarik.test_belarusbank.screens.news.NewsFragment;
 
 public class MainActivity extends BaseActivity implements AHBottomNavigation.OnTabSelectedListener {
@@ -56,17 +58,33 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
         return items;
     }
 
-    public void setNewsFragment() {
-        setMainFragment(NewsFragment.newInstance());
-    }
-
     @Override
     public boolean onTabSelected(int position, boolean wasSelected) {
+        switch (position) {
+            case MainBottomMenuPage.NEWS:
+                setNewsFragment();
+                return true;
+
+            case MainBottomMenuPage.CREDITS:
+                setCreditsFragment();
+                return true;
+
+            case MainBottomMenuPage.ATM:
+
+                return true;
+        }
         return false;
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+    }
 
+    public void setNewsFragment() {
+        setMainFragment(NewsFragment.newInstance());
+    }
+
+    public void setCreditsFragment() {
+        setMainFragment(CreditsFragment.newInstance());
     }
 }

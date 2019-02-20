@@ -1,13 +1,13 @@
-package by.yarik.test_belarusbank.core.domain.news;
+package by.yarik.test_belarusbank.domain.news;
 
 import java.util.List;
 
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
-import by.yarik.test_belarusbank.core.domain.IInteractor;
+import by.yarik.test_belarusbank.domain.IRepository;
 import io.reactivex.Single;
 
-public interface INewsInteractor extends IInteractor {
+public interface INewsRepository extends IRepository {
 
     Single<List<NewsResponse>> news();
 

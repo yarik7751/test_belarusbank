@@ -1,7 +1,7 @@
-package by.yarik.test_belarusbank.core.data;
+package by.yarik.test_belarusbank.data;
 
 import by.yarik.test_belarusbank.api.Requests;
-import by.yarik.test_belarusbank.core.domain.IRepository;
+import by.yarik.test_belarusbank.domain.IRepository;
 
 public class BaseRepository implements IRepository {
 

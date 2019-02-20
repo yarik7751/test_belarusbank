@@ -2,16 +2,13 @@ package by.yarik.test_belarusbank.screens.news;
 
 import java.util.List;
 
-import by.yarik.test_belarusbank.api.Requests;
-import by.yarik.test_belarusbank.api.belarusbank.IApi;
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
-import by.yarik.test_belarusbank.core.domain.news.INewsInteractor;
+import by.yarik.test_belarusbank.domain.news.INewsInteractor;
 import by.yarik.test_belarusbank.core.mappers.NewsMapper;
 import by.yarik.test_belarusbank.core.rx.RxTransformers;
-import by.yarik.test_belarusbank.core.rx.ScheduleSingle;
 import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
 
 public class NewsPresenter extends BasePresenter<INewsView> implements INewsPresenter {

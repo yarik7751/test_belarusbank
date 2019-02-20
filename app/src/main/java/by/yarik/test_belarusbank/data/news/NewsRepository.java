@@ -1,12 +1,12 @@
-package by.yarik.test_belarusbank.core.data.news;
+package by.yarik.test_belarusbank.data.news;
 
 import java.util.List;
 
 import by.yarik.test_belarusbank.api.Requests;
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
-import by.yarik.test_belarusbank.core.data.BaseRepository;
-import by.yarik.test_belarusbank.core.domain.news.INewsRepository;
+import by.yarik.test_belarusbank.data.BaseRepository;
+import by.yarik.test_belarusbank.domain.news.INewsRepository;
 import io.reactivex.Single;
 
 public class NewsRepository extends BaseRepository implements INewsRepository {

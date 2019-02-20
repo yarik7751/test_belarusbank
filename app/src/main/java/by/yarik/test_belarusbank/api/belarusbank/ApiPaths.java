@@ -7,4 +7,6 @@ public class ApiPaths {
     public static final String NEWS = BASE_PATH + "news_info";
 
     public static final String CURRENCY_EXCHANGE_CARDS = BASE_PATH + "kurs_cards";
+
+    public static final String CREDITS = BASE_PATH + "kredits_info";
 }

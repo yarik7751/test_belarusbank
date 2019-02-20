@@ -1,20 +1,17 @@
-package by.yarik.test_belarusbank.core.domain.news;
+package by.yarik.test_belarusbank.domain.news;
 
 import java.util.List;
 
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
-import by.yarik.test_belarusbank.core.data.BaseRepository;
-import by.yarik.test_belarusbank.core.domain.BaseInteractor;
+import by.yarik.test_belarusbank.domain.BaseInteractor;
 import by.yarik.test_belarusbank.core.rx.ScheduleSingle;
 import io.reactivex.Single;
 
-public class NewsInteractor extends BaseInteractor implements INewsInteractor {
-
-    protected INewsRepository repository;
+public class NewsInteractor extends BaseInteractor<INewsRepository> implements INewsInteractor {
 
     public NewsInteractor(INewsRepository repository) {
-        this.repository = repository;
+        super(repository);
     }
 
     @Override
