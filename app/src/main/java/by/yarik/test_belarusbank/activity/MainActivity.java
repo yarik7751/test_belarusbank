@@ -1,9 +1,7 @@
 package by.yarik.test_belarusbank.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -13,7 +11,7 @@ import java.util.List;
 
 import by.yarik.test_belarusbank.core.BaseActivity;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.core.MainBottomMenuPage;
+import by.yarik.test_belarusbank.core.annotations.MainBottomMenuPage;
 import by.yarik.test_belarusbank.screens.credits.CreditsFragment;
 import by.yarik.test_belarusbank.screens.news.NewsFragment;
 

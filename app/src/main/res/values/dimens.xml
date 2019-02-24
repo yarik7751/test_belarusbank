@@ -25,4 +25,7 @@
     <dimen name="default_text_size_25">25sp</dimen>
     <dimen name="zero_size">0dp</dimen>
     <dimen name="bottom_navigation_height">56dp</dimen>
+
+    <dimen name="loan_tabs_indicator_height">2dp</dimen>
+    <dimen name="line_height">1dp</dimen>
 </resources>

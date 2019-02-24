@@ -28,9 +28,7 @@ public class Requests {
         return belarusbankApi.currencyExchange();
     }
 
-    public Single<CreditResponse> credits(String types) {
-        Map<String, Object> data = new HashMap<>();
-        data.put("type", types);
+    public Single<List<CreditResponse>> credits(Map<String, Object> data) {
         return belarusbankApi.credits(data);
     }
 }

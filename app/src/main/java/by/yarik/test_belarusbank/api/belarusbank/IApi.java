@@ -8,7 +8,9 @@ import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
 import io.reactivex.Single;
 import retrofit2.http.Body;
+import retrofit2.http.FieldMap;
 import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
 
 public interface IApi {
 
@@ -19,5 +21,5 @@ public interface IApi {
     Single<List<CurrencyExchangeResponse>> currencyExchange();
 
     @GET(ApiPaths.CREDITS)
-    Single<CreditResponse> credits(@Body Map<String, Object> data);
+    Single<List<CreditResponse>> credits(@QueryMap Map<String, Object> data);
 }

@@ -7,6 +7,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import java.util.List;
+
 import butterknife.BindView;
 import by.yarik.test_belarusbank.R;
 import by.yarik.test_belarusbank.core.baseview.BaseFragment;
@@ -14,6 +16,9 @@ import by.yarik.test_belarusbank.data.credits.CreditsRepository;
 import by.yarik.test_belarusbank.domain.credits.CreditsInteractor;
 import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
 import by.yarik.test_belarusbank.domain.credits.ICreditsRepository;
+import by.yarik.test_belarusbank.screens.credits.adapter.CreditViewPagerAdapter;
+import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
+import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
 
 public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements ICreditsView {
 
@@ -35,7 +40,7 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
     @Override
     protected void setPresenter() {
         ICreditsRepository repository = new CreditsRepository(requests);
-        ICreditsInteractor interactor = new CreditsInteractor(repository);
+        ICreditsInteractor interactor = new CreditsInteractor(repository, resourceManager);
         presenter = new CreditsPresenter(this, resourceManager, interactor);
     }
 
@@ -52,10 +57,25 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
 
     @Override
     public void initUi() {
-        creditsTitles.addTab(creditsTitles.newTab().setText(R.string.credit_title_1));
-        creditsTitles.addTab(creditsTitles.newTab().setText(R.string.credit_title_2));
-        creditsTitles.addTab(creditsTitles.newTab().setText(R.string.credit_title_3));
-        creditsTitles.addTab(creditsTitles.newTab().setText(R.string.credit_title_4));
+
+    }
+
+    @Override
+    public void updateCredits(List<CreditSection> sections) {
+        updateCreditsTitles(sections);
+        updateCreditsLists(sections);
+    }
+
+    private void updateCreditsTitles(List<CreditSection> sections) {
+        creditsTitles.setupWithViewPager(creditsViewPager);
+        for (CreditSection section : sections) {
+            creditsTitles.addTab(creditsTitles.newTab().setText(section.getSectionTitle()));
+        }
         creditsTitles.setTabMode(TabLayout.MODE_SCROLLABLE);
+    }
+
+    private void updateCreditsLists(List<CreditSection> sections) {
+        CreditViewPagerAdapter adapter = new CreditViewPagerAdapter(getChildFragmentManager(), sections);
+        creditsViewPager.setAdapter(adapter);
     }
 }

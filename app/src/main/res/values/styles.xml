@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TabLayoutAlterOfferStyle" parent="android:Widget">
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicatorHeight">@dimen/loan_tabs_indicator_height</item>
+        <item name="tabPaddingStart">@dimen/margin_12</item>
+        <item name="tabPaddingEnd">@dimen/margin_12</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/TabAlterOfferStyle</item>
+        <item name="tabSelectedTextColor">@android:color/black</item>
+    </style>
+
+    <style name="TabAlterOfferStyle" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/default_text_size_14</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>

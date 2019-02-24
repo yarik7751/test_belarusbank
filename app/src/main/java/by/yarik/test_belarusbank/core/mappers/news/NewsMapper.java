@@ -1,4 +1,4 @@
-package by.yarik.test_belarusbank.core.mappers;
+package by.yarik.test_belarusbank.core.mappers.news;
 
 
 import java.util.List;

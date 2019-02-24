@@ -7,7 +7,7 @@ import by.yarik.test_belarusbank.api.pojo.NewsResponse;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
 import by.yarik.test_belarusbank.domain.news.INewsInteractor;
-import by.yarik.test_belarusbank.core.mappers.NewsMapper;
+import by.yarik.test_belarusbank.core.mappers.news.NewsMapper;
 import by.yarik.test_belarusbank.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
 

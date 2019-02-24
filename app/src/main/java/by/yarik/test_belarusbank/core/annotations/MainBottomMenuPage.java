@@ -1,4 +1,4 @@
-package by.yarik.test_belarusbank.core;
+package by.yarik.test_belarusbank.core.annotations;
 
 import android.support.annotation.IntDef;
 
