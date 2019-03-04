@@ -12,6 +12,7 @@ import java.util.List;
 import by.yarik.test_belarusbank.core.BaseActivity;
 import by.yarik.test_belarusbank.R;
 import by.yarik.test_belarusbank.core.annotations.MainBottomMenuPage;
+import by.yarik.test_belarusbank.screens.atm.AtmFragment;
 import by.yarik.test_belarusbank.screens.credits.CreditsFragment;
 import by.yarik.test_belarusbank.screens.news.NewsFragment;
 
@@ -68,7 +69,7 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
                 return true;
 
             case MainBottomMenuPage.ATM:
-
+                setAtmFragment();
                 return true;
         }
         return false;
@@ -84,5 +85,9 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
 
     public void setCreditsFragment() {
         setMainFragment(CreditsFragment.newInstance());
+    }
+
+    public void setAtmFragment() {
+        setMainFragment(AtmFragment.newInstance());
     }
 }

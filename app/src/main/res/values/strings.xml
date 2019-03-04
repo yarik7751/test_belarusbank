@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">test_belarusbank</string>
 
+    <string name="google_maps_key">AIzaSyB_MVxRp1bSGe4J3kWXgVgBTJdxr368b-g</string>
+
     <string name="loading_wait">Пожалуйста, подождите ...</string>
     <string name="usd_title">USD</string>
     <string name="eur_title">EUR</string>
