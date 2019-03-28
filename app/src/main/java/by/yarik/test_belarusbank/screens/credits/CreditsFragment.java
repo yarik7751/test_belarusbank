@@ -12,10 +12,10 @@ import java.util.List;
 import butterknife.BindView;
 import by.yarik.test_belarusbank.R;
 import by.yarik.test_belarusbank.core.baseview.BaseFragment;
-import by.yarik.test_belarusbank.data.credits.CreditsRepository;
+import by.yarik.test_belarusbank.data.NetworkRepository;
+import by.yarik.test_belarusbank.domain.INetworkRepository;
 import by.yarik.test_belarusbank.domain.credits.CreditsInteractor;
 import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
-import by.yarik.test_belarusbank.domain.credits.ICreditsRepository;
 import by.yarik.test_belarusbank.screens.credits.adapter.CreditViewPagerAdapter;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
@@ -39,7 +39,7 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
 
     @Override
     protected void setPresenter() {
-        ICreditsRepository repository = new CreditsRepository(requests);
+        INetworkRepository repository = new NetworkRepository(requests);
         ICreditsInteractor interactor = new CreditsInteractor(repository, resourceManager);
         presenter = new CreditsPresenter(this, resourceManager, interactor);
     }

@@ -1,12 +1,10 @@
 package by.yarik.test_belarusbank.domain;
 
-import by.yarik.test_belarusbank.data.BaseRepository;
+public class BaseInteractor implements IInteractor {
 
-public class BaseInteractor<R extends IRepository> implements IInteractor {
+    protected INetworkRepository repository;
 
-    protected R repository;
-
-    public BaseInteractor(R repository) {
+    public BaseInteractor(INetworkRepository repository) {
         this.repository = repository;
     }
 }

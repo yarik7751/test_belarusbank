@@ -4,13 +4,15 @@ import java.util.List;
 
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
+import by.yarik.test_belarusbank.data.NetworkRepository;
 import by.yarik.test_belarusbank.domain.BaseInteractor;
 import by.yarik.test_belarusbank.core.rx.ScheduleSingle;
+import by.yarik.test_belarusbank.domain.INetworkRepository;
 import io.reactivex.Single;
 
-public class NewsInteractor extends BaseInteractor<INewsRepository> implements INewsInteractor {
+public class NewsInteractor extends BaseInteractor implements INewsInteractor {
 
-    public NewsInteractor(INewsRepository repository) {
+    public NewsInteractor(INetworkRepository repository) {
         super(repository);
     }
 

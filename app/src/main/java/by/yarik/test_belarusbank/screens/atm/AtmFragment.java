@@ -25,10 +25,10 @@ import java.util.List;
 import butterknife.BindView;
 import by.yarik.test_belarusbank.R;
 import by.yarik.test_belarusbank.core.baseview.BaseFragment;
-import by.yarik.test_belarusbank.data.atm.AtmRepository;
+import by.yarik.test_belarusbank.data.NetworkRepository;
+import by.yarik.test_belarusbank.domain.INetworkRepository;
 import by.yarik.test_belarusbank.domain.atm.AtmInteractor;
 import by.yarik.test_belarusbank.domain.atm.IAtmInteractor;
-import by.yarik.test_belarusbank.domain.atm.IAtmRepository;
 import by.yarik.test_belarusbank.screens.atm.viewmodel.AtmViewModel;
 
 public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView, OnMapReadyCallback {
@@ -49,7 +49,7 @@ public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView
 
     @Override
     protected void setPresenter() {
-        IAtmRepository repository = new AtmRepository(requests);
+        INetworkRepository repository = new NetworkRepository(requests);
         IAtmInteractor interactor = new AtmInteractor(repository, resourceManager);
         presenter = new AtmPresenter(this, resourceManager, interactor);
     }
