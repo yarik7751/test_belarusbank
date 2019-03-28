@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.google.android.gms.common.util.NumberUtils;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
@@ -13,8 +15,11 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -57,30 +62,6 @@ public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mapMapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapMapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapMapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapMapView.onLowMemory();
-    }
-
-    @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
         getPresenter().onMapReady();
@@ -96,16 +77,36 @@ public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView
 
     @Override
     public void updateAtms(List<AtmViewModel> viewModels) {
+        List<Marker> markers = new ArrayList<>();
         for(AtmViewModel viewModel : viewModels) {
-            addMarker(viewModel);
+            Marker marker = addMarker(viewModel);
+            markers.add(marker);
         }
+
+        LatLngBounds bounds = getCoordinatesBounds(markers);
+        CameraUpdate cameraUpdate = getCameraUpdate(bounds);
+        googleMap.moveCamera(cameraUpdate);
     }
 
-    private void addMarker(AtmViewModel viewModel) {
+    private Marker addMarker(AtmViewModel viewModel) {
         LatLng position = new LatLng(Double.parseDouble(viewModel.getLat()), Double.parseDouble(viewModel.getLng()));
 
-        googleMap.addMarker(new MarkerOptions()
+        return googleMap.addMarker(new MarkerOptions()
                 .position(position)
                 .title(viewModel.getText()));
+    }
+
+    private LatLngBounds getCoordinatesBounds(List<Marker> markers) {
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for(Marker marker : markers) {
+            builder.include(marker.getPosition());
+        }
+
+        return builder.build();
+    }
+
+    private CameraUpdate getCameraUpdate(LatLngBounds latLngBounds) {
+        int position = 0;
+        return CameraUpdateFactory.newLatLngBounds(latLngBounds, position);
     }
 }
