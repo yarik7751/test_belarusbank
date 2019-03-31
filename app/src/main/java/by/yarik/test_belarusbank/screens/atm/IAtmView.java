@@ -9,5 +9,7 @@ public interface IAtmView extends IBaseView {
 
     void initUi();
 
+    void showInfoMessage(String info);
+
     void updateAtms(List<AtmViewModel> viewModels);
 }

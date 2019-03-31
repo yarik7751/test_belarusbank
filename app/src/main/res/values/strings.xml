@@ -21,4 +21,12 @@
     <string name="amount_title">Сумма: %s</string>
     <string name="term_title">Срок: %s</string>
     <string name="percent_title">Проценты: %s %%</string>
+    <string name="amt_city_value">Город</string>
+    <string name="atm_currency_byn">BYN</string>
+    <string name="atm_currency_usd">USD</string>
+    <string name="atm_currency_eur">EUR</string>
+    <string name="atm_find">Найти</string>
+    <string name="atm_cancel">Отмена</string>
+    <string name="atm_search_title">Найти</string>
+    <string name="atm_empty_message">По данному запросу банкоматов не найденно</string>
 </resources>
