@@ -1,5 +1,7 @@
 package by.yarik.test_belarusbank.screens.credits;
 
+import com.arellomobile.mvp.InjectViewState;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,14 +16,15 @@ import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
 
+@InjectViewState
 public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICreditsPresenter {
 
     private static final String ALL_CREDIT_TYPES = "потребительский,автокредитование,на образование,на недвижимость";
 
     private ICreditsInteractor interactor;
 
-    public CreditsPresenter(ICreditsView view, ResourceManager resourceManager, ICreditsInteractor interactor) {
-        super(view, resourceManager);
+    CreditsPresenter(ResourceManager resourceManager, ICreditsInteractor interactor) {
+        super(resourceManager);
         this.interactor = interactor;
     }
 

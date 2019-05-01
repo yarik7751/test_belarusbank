@@ -7,12 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,6 +37,7 @@ import by.yarik.test_belarusbank.domain.INetworkRepository;
 import by.yarik.test_belarusbank.domain.atm.AtmInteractor;
 import by.yarik.test_belarusbank.domain.atm.IAtmInteractor;
 import by.yarik.test_belarusbank.screens.atm.viewmodel.AtmViewModel;
+import by.yarik.test_belarusbank.screens.credits.CreditsPresenter;
 
 public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView, OnMapReadyCallback {
 
@@ -48,6 +50,9 @@ public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView
     private GoogleMap googleMap;
     private AlertDialog searchAtmDialog;
 
+    @InjectPresenter
+    public AtmPresenter presenter;
+
     public static AtmFragment newInstance() {
         return new AtmFragment();
     }
@@ -58,10 +63,16 @@ public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView
     }
 
     @Override
-    protected void setPresenter() {
+    @ProvidePresenter
+    public AtmPresenter initPresenter() {
         INetworkRepository repository = new NetworkRepository(requests);
         IAtmInteractor interactor = new AtmInteractor(repository, resourceManager);
-        presenter = new AtmPresenter(this, resourceManager, interactor);
+        return new AtmPresenter(resourceManager, interactor);
+    }
+
+    @Override
+    protected IAtmPresenter getPresenter() {
+        return presenter;
     }
 
     @Override

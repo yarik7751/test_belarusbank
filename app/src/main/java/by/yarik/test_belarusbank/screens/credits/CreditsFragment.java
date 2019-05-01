@@ -7,6 +7,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -18,7 +21,7 @@ import by.yarik.test_belarusbank.domain.credits.CreditsInteractor;
 import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
 import by.yarik.test_belarusbank.screens.credits.adapter.CreditViewPagerAdapter;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
-import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
+import by.yarik.test_belarusbank.screens.news.NewsPresenter;
 
 public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements ICreditsView {
 
@@ -27,6 +30,9 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
 
     @BindView(R.id.vp_credits)
     protected ViewPager creditsViewPager;
+
+    @InjectPresenter
+    public CreditsPresenter presenter;
 
     public static CreditsFragment newInstance() {
         return new CreditsFragment();
@@ -38,10 +44,16 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
     }
 
     @Override
-    protected void setPresenter() {
+    @ProvidePresenter
+    public CreditsPresenter initPresenter() {
         INetworkRepository repository = new NetworkRepository(requests);
         ICreditsInteractor interactor = new CreditsInteractor(repository, resourceManager);
-        presenter = new CreditsPresenter(this, resourceManager, interactor);
+        return new CreditsPresenter(resourceManager, interactor);
+    }
+
+    @Override
+    protected ICreditsPresenter getPresenter() {
+        return presenter;
     }
 
     @Override

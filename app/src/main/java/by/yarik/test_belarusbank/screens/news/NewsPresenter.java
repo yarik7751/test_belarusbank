@@ -1,5 +1,7 @@
 package by.yarik.test_belarusbank.screens.news;
 
+import com.arellomobile.mvp.InjectViewState;
+
 import java.util.List;
 
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
@@ -11,12 +13,13 @@ import by.yarik.test_belarusbank.core.mappers.news.NewsMapper;
 import by.yarik.test_belarusbank.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
 
+@InjectViewState
 public class NewsPresenter extends BasePresenter<INewsView> implements INewsPresenter {
 
     private INewsInteractor interactor;
 
-    public NewsPresenter(INewsView view, ResourceManager resourceManager, INewsInteractor interactor) {
-        super(view, resourceManager);
+    NewsPresenter(ResourceManager resourceManager, INewsInteractor interactor) {
+        super(resourceManager);
         this.interactor = interactor;
     }
 

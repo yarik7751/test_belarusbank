@@ -1,6 +1,8 @@
 package by.yarik.test_belarusbank.core.baseview;
 
-public interface IBaseView {
+import com.arellomobile.mvp.MvpView;
+
+public interface IBaseView extends MvpView {
 
     void showLoading();
 

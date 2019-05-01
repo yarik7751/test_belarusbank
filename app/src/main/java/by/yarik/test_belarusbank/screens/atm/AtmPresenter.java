@@ -1,5 +1,6 @@
 package by.yarik.test_belarusbank.screens.atm;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.google.android.gms.common.util.CollectionUtils;
 
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import by.yarik.test_belarusbank.domain.atm.IAtmInteractor;
 import by.yarik.test_belarusbank.screens.atm.model.AtmParamsModel;
 import by.yarik.test_belarusbank.screens.atm.viewmodel.AtmViewModel;
 
+@InjectViewState
 public class AtmPresenter extends BasePresenter<IAtmView> implements IAtmPresenter {
 
     private static final String COMMA = ",";
@@ -27,8 +29,8 @@ public class AtmPresenter extends BasePresenter<IAtmView> implements IAtmPresent
     private IAtmInteractor interactor;
     private AtmParamsModel paramsModel;
 
-    AtmPresenter(IAtmView view, ResourceManager resourceManager, IAtmInteractor interactor) {
-        super(view, resourceManager);
+    AtmPresenter(ResourceManager resourceManager, IAtmInteractor interactor) {
+        super(resourceManager);
         this.interactor = interactor;
         paramsModel = new AtmParamsModel();
     }

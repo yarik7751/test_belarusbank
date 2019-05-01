@@ -9,21 +9,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.arellomobile.mvp.MvpAppCompatFragment;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import by.yarik.test_belarusbank.R;
 import by.yarik.test_belarusbank.api.Requests;
 import by.yarik.test_belarusbank.api.belarusbank.Api;
-import by.yarik.test_belarusbank.api.belarusbank.IApi;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.IBasePresenter;
 
-public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView {
+public abstract class BaseFragment<P extends IBasePresenter> extends MvpAppCompatFragment implements IBaseView {
 
     private ProgressDialog progressDialog;
 
     protected Requests requests;
-    protected T presenter;
     protected Unbinder unbinder;
     protected ResourceManager resourceManager;
 
@@ -40,10 +42,6 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
         View view = inflater.inflate(resourcesLayout(), container, false);
         unbinder = ButterKnife.bind(this, view);
         initProgressDialog();
-
-        if(presenter == null) {
-            setPresenter();
-        }
         return onCreateView(view, savedInstanceState);
     }
 
@@ -83,9 +81,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
 
     protected abstract View onCreateView(View view, @Nullable Bundle savedInstanceState);
 
-    protected T getPresenter() {
-        return presenter;
-    }
+    protected abstract P getPresenter();
 
-    protected abstract void setPresenter();
+    public abstract P initPresenter();
 }

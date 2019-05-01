@@ -8,6 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,6 +45,9 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
     @BindView(R.id.tv_usd_out)
     protected TextView usdOutTextView;
 
+    @InjectPresenter
+    public NewsPresenter presenter;
+
     public static NewsFragment newInstance() {
         return new NewsFragment();
     }
@@ -58,11 +64,17 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
     }
 
     @Override
-    protected void setPresenter() {
+    @ProvidePresenter
+    public NewsPresenter initPresenter() {
         Requests requests = getRequests();
         INetworkRepository repository = new NetworkRepository(requests);
         INewsInteractor interactor = new NewsInteractor(repository);
-        presenter = new NewsPresenter(this, resourceManager, interactor);
+        return new NewsPresenter(resourceManager, interactor);
+    }
+
+    @Override
+    protected INewsPresenter getPresenter() {
+        return presenter;
     }
 
     @Override

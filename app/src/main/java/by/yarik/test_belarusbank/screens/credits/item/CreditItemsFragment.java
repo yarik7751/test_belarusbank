@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,6 +25,9 @@ public class CreditItemsFragment extends BaseFragment<ICreditItemsPresenter> imp
 
     @BindView(R.id.rv_credit_items)
     protected RecyclerView creditItemsRecyclerView;
+
+    @InjectPresenter
+    public CreditItemsPresenter presenter;
 
     public static CreditItemsFragment newInstance(CreditSection section) {
         Bundle args = new Bundle();
@@ -44,9 +50,15 @@ public class CreditItemsFragment extends BaseFragment<ICreditItemsPresenter> imp
     }
 
     @Override
-    protected void setPresenter() {
+    @ProvidePresenter
+    public CreditItemsPresenter initPresenter() {
         CreditSection section = getArguments().getParcelable(ARGS_CREDITS);
-        presenter = new CreditItemsPresenter(this, resourceManager, section);
+        return new CreditItemsPresenter(resourceManager, section);
+    }
+
+    @Override
+    protected ICreditItemsPresenter getPresenter() {
+        return presenter;
     }
 
     @Override
