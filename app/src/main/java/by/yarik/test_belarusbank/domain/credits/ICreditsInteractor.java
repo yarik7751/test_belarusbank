@@ -10,5 +10,5 @@ import io.reactivex.Single;
 
 public interface ICreditsInteractor extends IInteractor {
 
-    Single<List<CreditViewModel>> credits(String types);
+    Single<List<CreditModel>> credits(String types);
 }

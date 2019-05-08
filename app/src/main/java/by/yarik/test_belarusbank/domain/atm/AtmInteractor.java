@@ -13,17 +13,14 @@ import io.reactivex.Single;
 
 public class AtmInteractor extends BaseInteractor implements IAtmInteractor {
 
-    private ResourceManager resourceManager;
-
-    public AtmInteractor(INetworkRepository repository, ResourceManager resourceManager) {
+    public AtmInteractor(INetworkRepository repository) {
         super(repository);
-        this.resourceManager = resourceManager;
     }
 
     @Override
     public Single<List<AtmViewModel>> atm(String city, String types, boolean withError) {
         return repository.atm(city, types)
-                .map(atmModels -> AtmModelViewMapper.mappingAtmModelItems(resourceManager, atmModels, withError))
+                .map(atmModels -> AtmModelViewMapper.mappingAtmModelItems(atmModels, withError))
                 .compose(ScheduleSingle.io());
     }
 }

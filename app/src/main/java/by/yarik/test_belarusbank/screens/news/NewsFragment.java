@@ -66,10 +66,7 @@ public class NewsFragment extends BaseFragment<INewsPresenter> implements INewsV
     @Override
     @ProvidePresenter
     public NewsPresenter initPresenter() {
-        Requests requests = getRequests();
-        INetworkRepository repository = new NetworkRepository(requests);
-        INewsInteractor interactor = new NewsInteractor(repository);
-        return new NewsPresenter(resourceManager, interactor);
+        return new NewsPresenter(resourceManager);
     }
 
     @Override

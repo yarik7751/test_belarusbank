@@ -46,9 +46,7 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
     @Override
     @ProvidePresenter
     public CreditsPresenter initPresenter() {
-        INetworkRepository repository = new NetworkRepository(requests);
-        ICreditsInteractor interactor = new CreditsInteractor(repository, resourceManager);
-        return new CreditsPresenter(resourceManager, interactor);
+        return new CreditsPresenter(resourceManager);
     }
 
     @Override

@@ -32,7 +32,7 @@ public abstract class BaseFragment<P extends IBasePresenter> extends MvpAppCompa
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         resourceManager = new ResourceManager(getContext());
-        requests = new Requests(Api.getBelarusbankApi(getContext()));
+        requests = new Requests(Api.getBelarusbankApi());
         super.onCreate(savedInstanceState);
     }
 

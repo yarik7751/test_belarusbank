@@ -17,9 +17,9 @@ public class Api {
     private static int REQUEST_TIMEOUT = 60;
     private static OkHttpClient okHttpClient;
 
-    public static IApi getBelarusbankApi(Context context) {
+    public static IApi getBelarusbankApi() {
         if(okHttpClient == null) {
-            initOkHttpClient(context);
+            initOkHttpClient();
         }
 
         if(retrofit == null) {
@@ -34,7 +34,7 @@ public class Api {
         return retrofit.create(IApi.class);
     }
 
-    private static void initOkHttpClient(Context context) {
+    private static void initOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)

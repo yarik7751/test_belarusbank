@@ -4,6 +4,9 @@ import com.arellomobile.mvp.InjectViewState;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import by.yarik.test_belarusbank.BelarusbankApplication;
 import by.yarik.test_belarusbank.api.pojo.CurrencyExchangeResponse;
 import by.yarik.test_belarusbank.api.pojo.NewsResponse;
 import by.yarik.test_belarusbank.core.ResourceManager;
@@ -16,11 +19,12 @@ import by.yarik.test_belarusbank.screens.news.model.RateViewMoodel;
 @InjectViewState
 public class NewsPresenter extends BasePresenter<INewsView> implements INewsPresenter {
 
-    private INewsInteractor interactor;
+    @Inject
+    INewsInteractor interactor;
 
-    NewsPresenter(ResourceManager resourceManager, INewsInteractor interactor) {
+    NewsPresenter(ResourceManager resourceManager) {
         super(resourceManager);
-        this.interactor = interactor;
+        BelarusbankApplication.getApiComponent().inject(this);
     }
 
     @Override

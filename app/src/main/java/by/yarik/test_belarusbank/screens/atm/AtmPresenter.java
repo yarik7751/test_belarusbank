@@ -6,6 +6,9 @@ import com.google.android.gms.common.util.CollectionUtils;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import by.yarik.test_belarusbank.BelarusbankApplication;
 import by.yarik.test_belarusbank.R;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
@@ -26,13 +29,14 @@ public class AtmPresenter extends BasePresenter<IAtmView> implements IAtmPresent
     private static final String CURRENCY_TYPES_USD = "USD";
     private static final String CURRENCY_TYPES_EUR = "EUR";
 
-    private IAtmInteractor interactor;
+    @Inject
+    IAtmInteractor interactor;
     private AtmParamsModel paramsModel;
 
-    AtmPresenter(ResourceManager resourceManager, IAtmInteractor interactor) {
+    AtmPresenter(ResourceManager resourceManager) {
         super(resourceManager);
-        this.interactor = interactor;
         paramsModel = new AtmParamsModel();
+        BelarusbankApplication.getApiComponent().inject(this);
     }
 
     @Override

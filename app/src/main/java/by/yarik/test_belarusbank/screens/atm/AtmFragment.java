@@ -65,9 +65,7 @@ public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView
     @Override
     @ProvidePresenter
     public AtmPresenter initPresenter() {
-        INetworkRepository repository = new NetworkRepository(requests);
-        IAtmInteractor interactor = new AtmInteractor(repository, resourceManager);
-        return new AtmPresenter(resourceManager, interactor);
+        return new AtmPresenter(resourceManager);
     }
 
     @Override

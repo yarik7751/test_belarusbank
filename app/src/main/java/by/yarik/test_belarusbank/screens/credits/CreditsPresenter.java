@@ -7,12 +7,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import by.yarik.test_belarusbank.BelarusbankApplication;
 import by.yarik.test_belarusbank.core.ResourceManager;
 import by.yarik.test_belarusbank.core.annotations.credit.CreditType;
 import by.yarik.test_belarusbank.core.annotations.credit.CreditViewModelType;
 import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
+import by.yarik.test_belarusbank.core.mappers.credits.CreditsViewModelMapper;
 import by.yarik.test_belarusbank.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
+import by.yarik.test_belarusbank.domain.credits.model.CreditModel;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
 
@@ -21,11 +26,12 @@ public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICr
 
     private static final String ALL_CREDIT_TYPES = "потребительский,автокредитование,на образование,на недвижимость";
 
-    private ICreditsInteractor interactor;
+    @Inject
+    ICreditsInteractor interactor;
 
-    CreditsPresenter(ResourceManager resourceManager, ICreditsInteractor interactor) {
+    CreditsPresenter(ResourceManager resourceManager) {
         super(resourceManager);
-        this.interactor = interactor;
+        BelarusbankApplication.getApiComponent().inject(this);
     }
 
     @Override
@@ -44,7 +50,9 @@ public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICr
                 .subscribe(this::creditsSuccessful, this::onFailure));
     }
 
-    private void creditsSuccessful(List<CreditViewModel> viewModels) {
+    private void creditsSuccessful(List<CreditModel> models) {
+        List<CreditViewModel> viewModels = CreditsViewModelMapper.mappingCreditViewModelItems(resourceManager, models);
+
         List<CreditViewModel> consumer = getCreditsByType(viewModels, CreditViewModelType.CONSUMER);
         List<CreditViewModel> car = getCreditsByType(viewModels, CreditViewModelType.CAR);
         List<CreditViewModel> education = getCreditsByType(viewModels, CreditViewModelType.EDUCATION);

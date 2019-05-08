@@ -15,17 +15,13 @@ import io.reactivex.Single;
 
 public class CreditsInteractor extends BaseInteractor implements ICreditsInteractor {
 
-    private ResourceManager resourceManager;
-
-    public CreditsInteractor(INetworkRepository repository, ResourceManager resourceManager) {
+    public CreditsInteractor(INetworkRepository repository) {
         super(repository);
-        this.resourceManager = resourceManager;
     }
 
     @Override
-    public Single<List<CreditViewModel>> credits(String types) {
+    public Single<List<CreditModel>> credits(String types) {
         return repository.credits(types)
-                .map(models -> CreditsViewModelMapper.mappingCreditViewModelItems(resourceManager, models))
                 .compose(ScheduleSingle.io());
     }
 }
