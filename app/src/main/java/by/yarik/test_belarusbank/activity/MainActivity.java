@@ -9,12 +9,12 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import by.yarik.test_belarusbank.core.BaseActivity;
+import by.yarik.core.core.BaseActivity;
+import by.yarik.core.core.annotations.MainBottomMenuPage;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.core.annotations.MainBottomMenuPage;
 import by.yarik.test_belarusbank.screens.atm.AtmFragment;
 import by.yarik.test_belarusbank.screens.credits.CreditsFragment;
-import by.yarik.test_belarusbank.screens.news.NewsFragment;
+import by.yarik.news.presentation.news.view.NewsFragment;
 
 public class MainActivity extends BaseActivity implements AHBottomNavigation.OnTabSelectedListener {
 
@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setContainerFragmentRes(R.id.container);
         initBottomNavigation();
         for(AHBottomNavigationItem item : getBottomItems()) {
             bottomNavigation.addItem(item);
@@ -84,10 +85,10 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
     }
 
     public void setCreditsFragment() {
-        setMainFragment(CreditsFragment.newInstance());
+        //setMainFragment(CreditsFragment.newInstance());
     }
 
     public void setAtmFragment() {
-        setMainFragment(AtmFragment.newInstance());
+        //setMainFragment(AtmFragment.newInstance());
     }
 }

@@ -30,14 +30,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import by.yarik.core.core.baseview.BaseFragment;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.core.baseview.BaseFragment;
-import by.yarik.test_belarusbank.data.NetworkRepository;
-import by.yarik.test_belarusbank.domain.INetworkRepository;
-import by.yarik.test_belarusbank.domain.atm.AtmInteractor;
-import by.yarik.test_belarusbank.domain.atm.IAtmInteractor;
 import by.yarik.test_belarusbank.screens.atm.viewmodel.AtmViewModel;
-import by.yarik.test_belarusbank.screens.credits.CreditsPresenter;
 
 public class AtmFragment extends BaseFragment<IAtmPresenter> implements IAtmView, OnMapReadyCallback {
 

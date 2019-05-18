@@ -8,11 +8,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import by.yarik.core.core.ResourceManager;
+import by.yarik.core.core.basepresenter.BasePresenter;
+import by.yarik.core.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.BelarusbankApplication;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.core.ResourceManager;
-import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
-import by.yarik.test_belarusbank.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.domain.atm.IAtmInteractor;
 import by.yarik.test_belarusbank.screens.atm.model.AtmParamsModel;
 import by.yarik.test_belarusbank.screens.atm.viewmodel.AtmViewModel;
@@ -36,7 +36,7 @@ public class AtmPresenter extends BasePresenter<IAtmView> implements IAtmPresent
     AtmPresenter(ResourceManager resourceManager) {
         super(resourceManager);
         paramsModel = new AtmParamsModel();
-        BelarusbankApplication.getApiComponent().inject(this);
+        //BelarusbankApplication.getApiComponent().inject(this);
     }
 
     @Override

@@ -12,9 +12,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 import java.util.List;
 
 import butterknife.BindView;
+import by.yarik.core.core.baseview.BaseFragment;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.core.baseview.BaseFragment;
-import by.yarik.test_belarusbank.screens.credits.ICreditsView;
 import by.yarik.test_belarusbank.screens.credits.adapter.CreditListAdapter;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;

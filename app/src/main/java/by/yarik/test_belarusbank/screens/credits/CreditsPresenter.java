@@ -4,20 +4,19 @@ import com.arellomobile.mvp.InjectViewState;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import by.yarik.core.core.ResourceManager;
+import by.yarik.core.core.annotations.credit.CreditType;
+import by.yarik.core.core.annotations.credit.CreditViewModelType;
+import by.yarik.core.core.basepresenter.BasePresenter;
+import by.yarik.core.core.mappers.credits.CreditsViewModelMapper;
+import by.yarik.core.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.BelarusbankApplication;
-import by.yarik.test_belarusbank.core.ResourceManager;
-import by.yarik.test_belarusbank.core.annotations.credit.CreditType;
-import by.yarik.test_belarusbank.core.annotations.credit.CreditViewModelType;
-import by.yarik.test_belarusbank.core.basepresenter.BasePresenter;
-import by.yarik.test_belarusbank.core.mappers.credits.CreditsViewModelMapper;
-import by.yarik.test_belarusbank.core.rx.RxTransformers;
 import by.yarik.test_belarusbank.domain.credits.ICreditsInteractor;
-import by.yarik.test_belarusbank.domain.credits.model.CreditModel;
+import by.yarik.core.core.models.CreditModel;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
 
@@ -31,7 +30,7 @@ public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICr
 
     CreditsPresenter(ResourceManager resourceManager) {
         super(resourceManager);
-        BelarusbankApplication.getApiComponent().inject(this);
+        //BelarusbankApplication.getApiComponent().inject(this);
     }
 
     @Override
@@ -51,7 +50,7 @@ public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICr
     }
 
     private void creditsSuccessful(List<CreditModel> models) {
-        List<CreditViewModel> viewModels = CreditsViewModelMapper.mappingCreditViewModelItems(resourceManager, models);
+        /*List<CreditViewModel> viewModels = CreditsViewModelMapper.mappingCreditViewModelItems(resourceManager, models);
 
         List<CreditViewModel> consumer = getCreditsByType(viewModels, CreditViewModelType.CONSUMER);
         List<CreditViewModel> car = getCreditsByType(viewModels, CreditViewModelType.CAR);
@@ -64,7 +63,7 @@ public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICr
                 new CreditSection(CreditType.EDUCATION, education),
                 new CreditSection(CreditType.PROPERTY, property)
         );
-        getView().updateCredits(sections);
+        getView().updateCredits(sections);*/
     }
 
     private List<CreditViewModel> getCreditsByType(List<CreditViewModel> viewModels, @CreditViewModelType int type) {

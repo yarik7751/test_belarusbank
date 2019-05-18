@@ -3,12 +3,6 @@
 
     <string name="google_maps_key">AIzaSyB_MVxRp1bSGe4J3kWXgVgBTJdxr368b-g</string>
 
-    <string name="loading_wait">Пожалуйста, подождите ...</string>
-    <string name="usd_title">USD</string>
-    <string name="eur_title">EUR</string>
-    <string name="in_value">In: %s</string>
-    <string name="out_value">Out: %s</string>
-    <string name="date_value">Rate date: %s</string>
     <string name="news_title">Новости</string>
     <string name="credits_title">Кредиты</string>
     <string name="atm_title">Банкоматы</string>
@@ -29,4 +23,5 @@
     <string name="atm_cancel">Отмена</string>
     <string name="atm_search_title">Найти</string>
     <string name="atm_empty_message">По данному запросу банкоматов не найденно</string>
+    <string name="title_news">news</string>
 </resources>

@@ -3,7 +3,7 @@ package by.yarik.test_belarusbank.screens.credits.viewmodel;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import by.yarik.test_belarusbank.core.annotations.credit.CreditViewModelType;
+import by.yarik.core.core.annotations.credit.CreditViewModelType;
 
 public class CreditViewModel implements Parcelable {
 
