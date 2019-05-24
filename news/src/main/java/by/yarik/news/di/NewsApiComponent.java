@@ -6,12 +6,13 @@ import by.yarik.core.core.di.data.RepositoryModule;
 import by.yarik.core.core.di.data.RequestModule;
 import by.yarik.news.di.module.NewsModule;
 import by.yarik.news.presentation.news.presenter.NewsPresenter;
+import by.yarik.news_api.INewsApi;
 import dagger.Component;
 
 @Component(modules = {RequestModule.class, RepositoryModule.class,
         NewsModule.class})
 @Singleton
-public abstract class NewsApiComponent {
+public abstract class NewsApiComponent implements INewsApi {
 
     private static NewsApiComponent newsApiComponent;
 
@@ -23,5 +24,5 @@ public abstract class NewsApiComponent {
         return newsApiComponent;
     }
 
-    public abstract void inject(NewsPresenter fragment);
+    public abstract void inject(NewsPresenter presenter);
 }

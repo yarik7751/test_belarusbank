@@ -25,7 +25,7 @@ public class CreditItemsFragment extends BaseFragment<ICreditItemsPresenter> imp
     @BindView(R.id.rv_credit_items)
     protected RecyclerView creditItemsRecyclerView;
 
-    @InjectPresenter
+    //@InjectPresenter
     public CreditItemsPresenter presenter;
 
     public static CreditItemsFragment newInstance(CreditSection section) {
@@ -49,7 +49,7 @@ public class CreditItemsFragment extends BaseFragment<ICreditItemsPresenter> imp
     }
 
     @Override
-    @ProvidePresenter
+    //@ProvidePresenter
     public CreditItemsPresenter initPresenter() {
         CreditSection section = getArguments().getParcelable(ARGS_CREDITS);
         return new CreditItemsPresenter(resourceManager, section);

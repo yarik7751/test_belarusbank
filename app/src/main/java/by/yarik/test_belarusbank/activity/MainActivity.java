@@ -9,31 +9,44 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import by.yarik.atm.di.AtmApiComponent;
 import by.yarik.core.core.BaseActivity;
-import by.yarik.core.core.annotations.MainBottomMenuPage;
+import by.yarik.news.di.NewsApiComponent;
 import by.yarik.test_belarusbank.R;
-import by.yarik.test_belarusbank.screens.atm.AtmFragment;
-import by.yarik.test_belarusbank.screens.credits.CreditsFragment;
-import by.yarik.news.presentation.news.view.NewsFragment;
 
-public class MainActivity extends BaseActivity implements AHBottomNavigation.OnTabSelectedListener {
+public class MainActivity extends BaseActivity implements IMainView {
 
     private static final int FIRST_ITEM = 0;
     protected AHBottomNavigation bottomNavigation;
+
+    private IMainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setContainerFragmentRes(R.id.container);
-        initBottomNavigation();
-        for(AHBottomNavigationItem item : getBottomItems()) {
-            bottomNavigation.addItem(item);
-        }
+        presenter = new MainPresenter(this);
+
+        presenter.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
             setNewsFragment();
         }
+    }
+
+    @Override
+    public void initUi() {
+        initBottomNavigation();
+        for(AHBottomNavigationItem item : getBottomItems()) {
+            bottomNavigation.addItem(item);
+        }
+        bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
+            @Override
+            public boolean onTabSelected(int position, boolean wasSelected) {
+                return presenter.onTabSelected(position, wasSelected);
+            }
+        });
     }
 
     private void initBottomNavigation() {
@@ -46,7 +59,6 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
         bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         bottomNavigation.setColored(false);
         bottomNavigation.setCurrentItem(FIRST_ITEM);
-        bottomNavigation.setOnTabSelectedListener(this);
         bottomNavigation.setTitleTextSizeInSp(14, 12);
     }
 
@@ -59,36 +71,17 @@ public class MainActivity extends BaseActivity implements AHBottomNavigation.OnT
     }
 
     @Override
-    public boolean onTabSelected(int position, boolean wasSelected) {
-        switch (position) {
-            case MainBottomMenuPage.NEWS:
-                setNewsFragment();
-                return true;
-
-            case MainBottomMenuPage.CREDITS:
-                setCreditsFragment();
-                return true;
-
-            case MainBottomMenuPage.ATM:
-                setAtmFragment();
-                return true;
-        }
-        return false;
+    public void setNewsFragment() {
+        setMainFragment(NewsApiComponent.getInstance().newsStarter().getScreen());
     }
 
     @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-    }
-
-    public void setNewsFragment() {
-        setMainFragment(NewsFragment.newInstance());
-    }
-
     public void setCreditsFragment() {
         //setMainFragment(CreditsFragment.newInstance());
     }
 
+    @Override
     public void setAtmFragment() {
-        //setMainFragment(AtmFragment.newInstance());
+        setMainFragment(AtmApiComponent.getInstance().atmStarter().getScreen());
     }
 }

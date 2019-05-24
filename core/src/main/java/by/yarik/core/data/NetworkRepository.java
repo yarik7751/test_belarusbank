@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import by.yarik.core.core.basedomain.INetworkRepository;
-import by.yarik.core.core.mappers.atm.AtmModelMapper;
+import by.yarik.core.core.mappers.AtmModelMapper;
 import by.yarik.core.core.mappers.credits.CreditsModelMapper;
 import by.yarik.core.api.Requests;
 import by.yarik.core.api.pojo.CurrencyExchangeResponse;

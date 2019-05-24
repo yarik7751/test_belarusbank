@@ -26,7 +26,7 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
     @BindView(R.id.vp_credits)
     protected ViewPager creditsViewPager;
 
-    @InjectPresenter
+    //@InjectPresenter
     public CreditsPresenter presenter;
 
     public static CreditsFragment newInstance() {
@@ -39,7 +39,7 @@ public class CreditsFragment extends BaseFragment<ICreditsPresenter> implements 
     }
 
     @Override
-    @ProvidePresenter
+    //@ProvidePresenter
     public CreditsPresenter initPresenter() {
         return new CreditsPresenter(resourceManager);
     }

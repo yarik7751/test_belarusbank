@@ -6,7 +6,7 @@ import by.yarik.core.core.ResourceManager;
 import by.yarik.core.core.basepresenter.BasePresenter;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 
-@InjectViewState
+//@InjectViewState
 public class CreditItemsPresenter extends BasePresenter<ICreditItemsView> implements ICreditItemsPresenter{
 
     private CreditSection section;

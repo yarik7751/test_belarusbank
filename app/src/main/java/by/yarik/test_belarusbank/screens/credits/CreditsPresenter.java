@@ -20,7 +20,7 @@ import by.yarik.core.core.models.CreditModel;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditSection;
 import by.yarik.test_belarusbank.screens.credits.viewmodel.CreditViewModel;
 
-@InjectViewState
+//@InjectViewState
 public class CreditsPresenter extends BasePresenter<ICreditsView> implements ICreditsPresenter {
 
     private static final String ALL_CREDIT_TYPES = "потребительский,автокредитование,на образование,на недвижимость";

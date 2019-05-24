@@ -1,1 +1,1 @@
-include ':app', ':news', ':core', ':news_api'
+include ':app', ':news', ':core', ':news_api', ':atm', ':atm_api'
