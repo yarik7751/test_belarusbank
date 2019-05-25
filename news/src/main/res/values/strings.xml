@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">news</string>
+
+    <string name="usd_title">USD</string>
+    <string name="eur_title">EUR</string>
+
+    <string name="in_value">In: %s</string>
+    <string name="out_value">Out: %s</string>
+    <string name="date_value">Rate date: %s</string>
+</resources>

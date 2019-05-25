@@ -23,6 +23,14 @@ android {
 }
 
 dependencies {
+    implementation project(':core')
+    implementation project(':news')
+    implementation project(':news_api')
+    implementation project(':atm')
+    implementation project(':atm_api')
+    implementation project(':credit')
+    implementation project(':credit_api')
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation "com.android.support:design:28.0.0"
@@ -34,15 +42,18 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.arello-mobile:moxy:1.4.5'
-    annotationProcessor 'com.arello-mobile:moxy-compiler:1.4.5'
-    implementation 'com.arello-mobile:moxy-android:1.4.5'
-    implementation 'com.arello-mobile:moxy-app-compat:1.4.5'
+    implementation "com.arello-mobile:moxy:1.5.3"
+    implementation "com.arello-mobile:moxy-app-compat:1.5.3"
+    annotationProcessor "com.arello-mobile:moxy-compiler:1.5.3"
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    implementation "com.google.dagger:dagger:2.22.1"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.22.1"
 
     implementation "com.squareup.retrofit2:retrofit:2.5.0"
     implementation "com.squareup.retrofit2:converter-gson:2.5.0"
