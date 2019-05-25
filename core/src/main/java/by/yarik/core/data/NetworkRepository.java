@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import by.yarik.core.core.basedomain.INetworkRepository;
-import by.yarik.core.core.mappers.AtmModelMapper;
-import by.yarik.core.core.mappers.credits.CreditsModelMapper;
 import by.yarik.core.api.Requests;
 import by.yarik.core.api.pojo.CurrencyExchangeResponse;
 import by.yarik.core.api.pojo.NewsResponse;
+import by.yarik.core.core.basedomain.INetworkRepository;
+import by.yarik.core.core.mappers.AtmModelMapper;
+import by.yarik.core.core.mappers.CreditsModelMapper;
 import by.yarik.core.core.models.AtmModel;
 import by.yarik.core.core.models.CreditModel;
 import io.reactivex.Single;

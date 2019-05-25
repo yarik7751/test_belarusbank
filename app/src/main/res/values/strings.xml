@@ -7,14 +7,5 @@
     <string name="credits_title">Кредиты</string>
     <string name="atm_title">Банкоматы</string>
 
-    <string name="credit_title_1">Потребительский</string>
-    <string name="credit_title_2">Автокредитование</string>
-    <string name="credit_title_3">На образование</string>
-    <string name="credit_title_4">На недвижимость</string>
-
-    <string name="amount_title">Сумма: %s</string>
-    <string name="term_title">Срок: %s</string>
-    <string name="percent_title">Проценты: %s %%</string>
-
     <string name="title_news">news</string>
 </resources>

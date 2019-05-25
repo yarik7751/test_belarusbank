@@ -25,7 +25,7 @@ public class MainPresenter implements IMainPresenter {
                 return true;
 
             case MainBottomMenuPage.CREDITS:
-                //view.setCreditsFragment();
+                view.setCreditsFragment();
                 return true;
 
             case MainBottomMenuPage.ATM:

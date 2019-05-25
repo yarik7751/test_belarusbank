@@ -11,6 +11,7 @@ import java.util.List;
 
 import by.yarik.atm.di.AtmApiComponent;
 import by.yarik.core.core.BaseActivity;
+import by.yarik.credit.di.CreditApiComponent;
 import by.yarik.news.di.NewsApiComponent;
 import by.yarik.test_belarusbank.R;
 
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     public void setCreditsFragment() {
-        //setMainFragment(CreditsFragment.newInstance());
+        setMainFragment(CreditApiComponent.getInstance().creditStarter().getScreen());
     }
 
     @Override
